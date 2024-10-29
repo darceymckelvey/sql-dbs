@@ -20,7 +20,7 @@
 
 -- what is NoSQL?
 -- this is where adata is stored in a non relational database. (instead of tables its like documents : key value pairs and grapghs, etc)
-
+ 
 -- what is SQL?
 -- its stands for structured query language
 --  it is a lanuage used to communicate with a database for relational databases.
@@ -32,6 +32,7 @@
 -- predicates are used to filter data. They are made up of clauses such as WHERE, HAVING, etc.
 
 -- use a pecific database for following queries
+-- data definition language(ddl)
 USE my_app_db;
 
 -- create a users table
@@ -41,3 +42,28 @@ CREATE TABLE users (
     email VARCHAR(100),
     age INT
 );
+
+-- altering users table
+ALTER TABLE users  
+ADD password VARCHAR(100);
+
+-- modifying user table
+ALTER TABLE users
+MODIFY COLUMN name VARCHAR(200);
+
+-- dropping users table
+-- DROP TABLE users
+
+-- remove all data records
+-- TRUNICATE TABLE users;
+
+-- INT - integer
+-- tinyint - 0 or 1
+-- varchar - variable length
+-- char - fixed-length
+-- float - a float
+-- date - the date - yyyy-mm-dd
+-- time - the time - HH:MM:SS
+-- Dattime - the date and the time
+
+-- data manipulation Language (dml)
