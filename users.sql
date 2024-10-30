@@ -73,3 +73,44 @@ VALUES (1, 'Andrew Paul-Price', 'andrew@gmail.com', 28, 'pass123');
 INSERT INTO users (id, name, email, age, password)
 VALUES (2, 'Andrew Paul-Price', 'andrew@gmail.com', 28, 'pass123'),
        (3, 'Andrew Paul-Price', 'andrew@gmail.com', 28, 'pass123');
+
+-- selecting all data and columns from the users table
+SELECT * FROM users;
+
+SELECT id, name FROM users;
+
+-- filtering data useing WHERE clause
+SELECT * FROM users WHERE age > 25;
+
+-- updating data in users table
+SET SQL_SAFE_UPDATES = 0;
+UPDATE users SET password = 'newpass123' WHERE id = 1;
+
+DELETE FROM users WHERE id = 1;
+
+-- a primary key is a unique identifer for each record
+ALTER TABLE USERS
+CHANGE COLUMN id id INT AUTO_INCREMENT PRIMARY KEY,
+ADD PRIMARY KEY (id);
+;
+
+-- insert a record without specifying identifer
+INSERT INTO users (name, email, age, password) VALUES ('Tom Jerry', 'email@email.com', 30, 'passpass');
+
+-- a foriegn key is a cloumn in a table that is a promary key in another table
+
+-- users have courses
+CREATE TABLE courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- inserting data into courses
+INSERT INTO courses (name, user_id) VALUES ('Math', 1);
+
+
+INSERT INTO courses (name, user_id)
+VALUES ('Science', 1),
+       ('History', 3);
