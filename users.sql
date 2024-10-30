@@ -67,3 +67,9 @@ MODIFY COLUMN name VARCHAR(200);
 -- Dattime - the date and the time
 
 -- data manipulation Language (dml)
+INSERT INTO users (id, name, email, age, password)
+VALUES (1, 'Andrew Paul-Price', 'andrew@gmail.com', 28, 'pass123');
+
+INSERT INTO users (id, name, email, age, password)
+VALUES (2, 'Andrew Paul-Price', 'andrew@gmail.com', 28, 'pass123'),
+       (3, 'Andrew Paul-Price', 'andrew@gmail.com', 28, 'pass123');
