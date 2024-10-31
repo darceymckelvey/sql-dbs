@@ -102,15 +102,41 @@ INSERT INTO users (name, email, age, password) VALUES ('Tom Jerry', 'email@email
 -- users have courses
 CREATE TABLE courses (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
+    name VARCHAR(100)
+    -- user_id INT,
+    -- FOREIGN KEY (user_id) REFERENCES users(id) 
+    -- ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+-- what are cascading actions
+-- when a record in a parent table is deleted or updated, the same action is performed on the child table
+-- cascade, set null, no action, restrict
+
+-- delete cascade records in courses table
+
+CREATE TABLE UserCourse (
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    course_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) 
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- inserting data into courses
-INSERT INTO courses (name, user_id) VALUES ('Math', 1);
+INSERT INTO courses (name)
+VALUES ('Science'),
+       ('History');
 
+-- inserting data into UserCourse table
+INSERT INTO UserCourse (user_id, course_id)
+VALUES (1, 1);
 
-INSERT INTO courses (name, user_id)
-VALUES ('Science', 1),
-       ('History', 3);
+SELECT * FROM users
+JOIN UserCourse ON users.id = UserCourse.user_id
+JOIN courses ON courses.id = UserCourse.course_id
+where user.id = 1;
+
+ORDER BY courses.name DESC;
